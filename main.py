@@ -21,7 +21,12 @@ logging_config = dict(
     handlers={
         'sh': {'class': 'logging.StreamHandler',
                'formatter': 'format',
-               'level': logging.DEBUG}
+               'level': logging.DEBUG},
+        'fh': {
+            'class': 'logging.FileHandler',
+            'formatter': 'format',
+            'level': logging.DEBUG
+        }
     },
     loggers={
         '': {'handlers': ['sh'],
@@ -54,8 +59,9 @@ another_config = {
     }
 }
 
-logging.config.dictConfig(another_config)
+logging.config.dictConfig(logging_config)
 logger = logging.getLogger(__name__)
+
 
 logger.info('start.')
 
